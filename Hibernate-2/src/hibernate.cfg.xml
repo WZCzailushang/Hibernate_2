@@ -51,11 +51,13 @@
 		<property name="jdbc.batch_size">30</property>
 
 		<!-- 需要关联的hibernate映射文件 .hbm.xml -->
+		<!-- 
 		<mapping resource="com/wzc/hibernate/entity/News.hbm.xml" />
 		<mapping resource="com/wzc/hibernate/entity/Worker.hbm.xml" />
 		
 		<mapping resource="com/wzc/hibernate/entities/n21/Customer.hbm.xml" />
 		<mapping resource="com/wzc/hibernate/entities/n21/Order.hbm.xml" />
+		 -->
 		
 		<mapping resource="com/wzc/hibernate/entities/n21both/Customer.hbm.xml" />
 		<mapping resource="com/wzc/hibernate/entities/n21both/Order.hbm.xml" />
