@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-8-26 21:03:26 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping package="com.wzc.hibernate.entity">
+    <class name="News" table="NEWS" select-before-update="true" dynamic-update="true" >
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        <!-- 若update的值等于false，则说明title这一列的值不能被修改 -->
+        <property name="title" type="java.lang.String" update="true" length="20">
+            <column name="TITLE" />
+        </property>
+        <property name="author" type="java.lang.String">
+            <column name="AUTHOR" />
+        </property>
+        <property name="date" type="java.util.Date">
+            <column name="DATE" />
+        </property>
+        
+        <!-- 映射派生属性 通过查询获得特定的描述，例如title:author -->
+       <property name="desc" formula="(SELECT concat(author,':',title) FROM NEWS n WHERE n.id = id)">
+            
+       </property>
+       
+       
+       <!-- 映射大文本 -->
+       
+       <!-- <property name="context" type="clob"></property>
+       
+       <property name="image" type = "blob"></property> -->
+       
+       <!-- 精确指定context和image的类型 ,可以使用sql-type属性-->
+      <property name="context" >
+          <column name="CONTEXT" sql-type="mediumtext"></column>
+      </property>
+      
+      <property name="image">
+          <column name="IMAGE" sql-type="mediumblob"></column>
+      </property>
+    </class>
+</hibernate-mapping>
