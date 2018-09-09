@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.wzc.hibernate.entities.n21both">
+    
+    <class name="Customer" table="CUSTOMERS">
+        <id name="customerId" type="java.lang.Integer">
+            <column name="CUSTOMER_ID" />
+            <generator class="native" />
+        </id>
+        <property name="customerName" type="java.lang.String">
+            <column name="CUSTOMER_NAME" />
+        </property>
+        <!-- 映射 1 对多的 集合  inverse=true 是为了使 Customer 放弃维护关联关系 -->
+        <!-- set：映射 set 类型的属性  table: set 中的元素记录在哪一个数据表中。该值需要和多对一的那个多的名字对应 -->
+        <!-- inverse:指定由哪一端来维护关联关系 。通常设置为 true ，以指定由多的一方来维护关联关系 -->
+        <!-- cascade:设定级联关系.不建议使用此方式 -->
+        <!-- order-by:在查询时对集合中的元素进行排序，order-by中使用的是表的字段名，而不是持久化类的属性名 -->
+        <set name="orders" table="ORDERS" inverse="true" order-by="ORDER_NAME DESC">
+            <!-- 指定多的表中的外键名 -->
+            <key column="CUSTOMER_ID"></key>
+            <!-- 指定映射类型 -->
+            <one-to-many class="Order"/>
+        </set>
+        
+    </class>
+    
+</hibernate-mapping>

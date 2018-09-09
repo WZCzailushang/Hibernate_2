@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-8-30 19:33:55 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.wzc.hibernate.entity.Pay" table="PAY">
+        <id name="monthlyPay" type="int">
+            <column name="MONTHLYPAY" />
+            <generator class="assigned" />
+        </id>
+        <property name="yearPay" type="int">
+            <column name="YEARPAY" />
+        </property>
+        <property name="vocationWithPay" type="int">
+            <column name="VOCATIONWITHPAY" />
+        </property>
+    </class>
+</hibernate-mapping>
