@@ -1,0 +1,4 @@
+double n-1分支是为了和master区别开
+double n-1包含完整的单向 n-1 和双向 n-1的hibernate映射关系
+单向 n-1：entity.n21包
+双向 n-1：entities.n21both包
