@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-9-16 19:23:51 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping package="com.wzc.hibernate.union.subclass">
+    <class name="Person" table="PERSONS" >
+        
+        <id name="Id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="increment" />
+        </id>
+        
+        
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+        
+     
+        
+        <property name="age" type="int">
+            <column name="AGE" />
+        </property>
+        
+       <union-subclass name="Student" table="TABLES">
+           <property name="school" column="SCHOOL" type="string"></property>
+       </union-subclass>
+        
+    </class>
+</hibernate-mapping>

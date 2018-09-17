@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-9-12 22:42:54 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping package="com.wzc.hibernate.n2n">
+    <class name="Category" table="CATEGORIES">
+        
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+        
+        <!-- 在这里 table 应该设置一个中间表 CATEGORY_ITEM-->
+        <set name="items" table="CATEGORY_ITEM" >
+            <key>
+                <!-- 这里的 column 是指 CATEGORIES类 在中间表中的外键名 -->
+                <column name="C_ID" />
+            </key>
+            <!-- 这里使用many-to-many来指定关联关系   column 是指 set集合中的持久化类 Item 类在中间表中的外键列的名称 -->
+            <many-to-many class="Item"  column="I_ID"></many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

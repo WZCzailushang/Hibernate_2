@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-9-16 19:23:51 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping package="com.wzc.hibernate.subclass">
+    <class name="Person" table="PERSONS" discriminator-value="PERSON">
+        
+        <id name="Id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        <discriminator column="TYPE" type="string"></discriminator>
+        
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+        
+        <!-- 配置辨别者列 -->
+        
+        <property name="age" type="int">
+            <column name="AGE" />
+        </property>
+        
+        <!-- 映射 student类，使用subclass , 父类和子类在一张表中-->
+        <subclass name="Student" discriminator-value="STUDENT">
+            <property name="school" type="string" column="SCHOOL"></property>
+        </subclass>
+        
+    </class>
+</hibernate-mapping>

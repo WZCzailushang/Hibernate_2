@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-9-12 22:42:54 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.wzc.hibernate.n2n.Item" table="ITEMS">
+        
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+        
+        <!-- 双向多对多 需要中间表的两个主键名交叉相等  设置inverse="true"，代表只由一个表来维护关联关系，避免 主键重复-->
+        <set name="categories" table="CATEGORY_ITEM" inverse="true">
+            <key>
+                <column name="I_ID"></column>
+            </key>
+            <many-to-many class="com.wzc.hibernate.n2n.Category" column="C_ID"></many-to-many>
+        </set>
+        
+    </class>
+</hibernate-mapping>
