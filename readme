@@ -1,0 +1,1 @@
+extends分支包含了Hibernate中关于映射关系的几种实现方法，包括 subclass、joined-class、union-class
